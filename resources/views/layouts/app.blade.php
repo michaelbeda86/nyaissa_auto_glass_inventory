@@ -24,12 +24,19 @@
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
+                    <nav>
+                        <ul>
+                            <li><a href="{{ route('stores.index') }}">Stores</a></li>
+                            <li><a href="{{ route('products.index') }}">Products</a></li>
+                            <li><a href="{{ route('sales.index') }}">Sales</a></li>
+                        </ul>
+                    </nav>
                 </header>
             @endisset
 
             <!-- Page Content -->
             <main>
-                {{ $slot }}
+                @yield('content')
             </main>
         </div>
     </body>

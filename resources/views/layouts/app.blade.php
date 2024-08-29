@@ -14,8 +14,8 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+    <body class="font-sans antialiased bg-gray-100 dark:bg-gray-900">
+        <div class="min-h-screen flex flex-col">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
@@ -24,19 +24,28 @@
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
-                    <nav>
-                        <ul>
-                            <li><a href="{{ route('stores.index') }}">Stores</a></li>
-                            <li><a href="{{ route('products.index') }}">Products</a></li>
-                            <li><a href="{{ route('sales.index') }}">Sales</a></li>
-                        </ul>
+                    <!-- Enhanced Navigation -->
+                    <nav class="bg-blue-900 text-white">
+                        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <ul class="flex space-x-4 py-3">
+                                <li><a href="{{ route('stores.index') }}" class="px-4 py-2 bg-blue-700 rounded-md hover:bg-blue-600 transition duration-300">Stores</a></li>
+                                <li><a href="{{ route('products.index') }}" class="px-4 py-2 bg-blue-700 rounded-md hover:bg-blue-600 transition duration-300">Products</a></li>
+                                <li><a href="{{ route('sales.index') }}" class="px-4 py-2 bg-blue-700 rounded-md hover:bg-blue-600 transition duration-300">Sales</a></li>
+                            </ul>
+                        </div>
                     </nav>
                 </header>
             @endisset
 
             <!-- Page Content -->
-            <main>
-                @yield('content')
+            <main class="flex-1">
+                <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                        <div class="p-6 text-gray-900 dark:text-gray-100">
+                            @yield('content')
+                        </div>
+                    </div>
+                </div>
             </main>
         </div>
     </body>

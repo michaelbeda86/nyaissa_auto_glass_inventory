@@ -23,7 +23,7 @@
                         <tr class="border-b border-gray-300 dark:border-gray-700">
                             <td class="py-2 px-4 text-gray-800 dark:text-gray-200">{{ $sale->product->name }}</td>
                             <td class="py-2 px-4 text-gray-800 dark:text-gray-200">{{ $sale->quantity }}</td>
-                            <td class="py-2 px-4 text-gray-800 dark:text-gray-200">Tshs {{ $sale->total_price }}</td>
+                            <td class="py-2 px-4 text-gray-800 dark:text-gray-200">Tshs {{ $sale->formatted_total_price }}</td>
                             <td class="py-2 px-4 text-gray-800 dark:text-gray-200">{{ $sale->sale_date->format('Y-m-d') }}</td>
                             <td class="py-2 px-4 text-gray-800 dark:text-gray-200">{{ $sale->store->name }}</td>
                             <td class="py-2 px-4">

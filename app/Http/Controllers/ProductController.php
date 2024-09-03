@@ -24,13 +24,17 @@ class ProductController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'description' => 'required',
-            'price' => 'required|numeric',
+            'category' => 'required',
+            'unit_price' => 'required|numeric',
             'stock' => 'required|integer',
             'store_id' => 'required|exists:stores,id',
         ]);
 
-        Product::create($request->all());
+        // Convert unit_price to an integer (removing any decimal point)
+        $requestData = $request->all();
+        $requestData['unit_price'] = (int) str_replace(',', '', $requestData['unit_price']);
+
+        Product::create($requestData);
 
         return redirect()->route('products.index')
                         ->with('success', 'Product created successfully.');
@@ -51,17 +55,22 @@ class ProductController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'description' => 'required',
-            'price' => 'required|numeric',
+            'category' => 'required',
+            'unit_price' => 'required|numeric',
             'stock' => 'required|integer',
             'store_id' => 'required|exists:stores,id',
         ]);
 
-        $product->update($request->all());
+        // Convert unit_price to an integer (removing any decimal point)
+        $requestData = $request->all();
+        $requestData['unit_price'] = (int) str_replace(',', '', $requestData['unit_price']);
+
+        $product->update($requestData);
 
         return redirect()->route('products.index')
                         ->with('success', 'Product updated successfully.');
     }
+
 
     public function destroy(Product $product)
     {

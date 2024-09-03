@@ -11,12 +11,28 @@
                 <input type="text" name="name" value="{{ $product->name }}" required class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
             </div>
             <div>
-                <label class="block text-gray-700 dark:text-gray-300">Description</label>
-                <input type="text" name="description" value="{{ $product->description }}" required class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                <label class="block text-gray-700 dark:text-gray-300">Category</label>
+                <select name="category" id="category" class="w-full p-2 border border-gray-300 rounded-md dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600" required>
+                    <option value="Windscreen" @if($product->category == 'Windscreen') selected @endif>Windscreen</option>
+                    <option value="Boot Glass" @if($product->category == 'Boot Glass') selected @endif>Boot Glass</option>
+                    <option value="Cabin Glass" @if($product->category == 'Cabin Glass') selected @endif>Cabin Glass</option>
+                    <option value="R1 Sliding" @if($product->category == 'R1 Sliding') selected @endif>R1 Sliding</option>
+                    <option value="R2 Sliding" @if($product->category == 'R2 Sliding') selected @endif>R2 Sliding</option>
+                    <option value="R3 Sliding" @if($product->category == 'R3 Sliding') selected @endif>R3 Sliding</option>
+                    <option value="R4 Sliding" @if($product->category == 'R4 Sliding') selected @endif>R4 Sliding</option>
+                    <option value="L1 Sliding" @if($product->category == 'L1 Sliding') selected @endif>L1 Sliding</option>
+                    <option value="L2 Sliding" @if($product->category == 'L2 Sliding') selected @endif>L2 Sliding</option>
+                    <option value="L3 Sliding" @if($product->category == 'L3 Sliding') selected @endif>L3 Sliding</option>
+                    <option value="L4 Sliding" @if($product->category == 'L4 Sliding') selected @endif>L4 Sliding</option>
+                    <option value="Side Fix R" @if($product->category == 'Side Fix R') selected @endif>Side Fix R</option>
+                    <option value="Side Fix L" @if($product->category == 'Side Fix L') selected @endif>Side Fix L</option>
+                    <option value="Quarter Glass" @if($product->category == 'Quarter Glass') selected @endif>Quarter Glass</option>
+                    <option value="Roof Glass" @if($product->category == 'Roof Glass') selected @endif>Roof Glass</option>
+                </select>
             </div>
             <div>
-                <label class="block text-gray-700 dark:text-gray-300">Price</label>
-                <input type="number" name="price" value="{{ $product->price }}" step="0.01" required class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                <label class="block text-gray-700 dark:text-gray-300">Unit Price</label>
+                <input type="number" name="unit_price" value="{{ $product->unit_price }}" step="0.01" required class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
             </div>
             <div>
                 <label class="block text-gray-700 dark:text-gray-300">Stock</label>

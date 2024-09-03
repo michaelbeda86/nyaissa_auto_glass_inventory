@@ -9,7 +9,8 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'price', 'stock', 'store_id'];
+    protected $fillable = ['name', 'category', 'unit_price', 'stock', 'store_id'];
+
 
     public function store()
     {
@@ -20,4 +21,14 @@ class Product extends Model
     {
         return $this->hasMany(Sale::class);
     }
+     // Accessor for formatted unit price
+     public function getFormattedUnitPriceAttribute()
+     {
+        return number_format($this->unit_price, 0, '.', ',');
+     }
+ 
+     // You may also want to cast unit_price as a float to ensure it's handled correctly
+     protected $casts = [
+         'unit_price' => 'float',
+     ];
 }

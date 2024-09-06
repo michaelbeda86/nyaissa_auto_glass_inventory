@@ -71,6 +71,12 @@ class ProductController extends Controller
                         ->with('success', 'Product updated successfully.');
     }
 
+    public function getProductsByStore($storeId)
+    {
+        $products = Product::where('store_id', $storeId)->get();
+        
+        return response()->json($products);
+    }
 
     public function destroy(Product $product)
     {

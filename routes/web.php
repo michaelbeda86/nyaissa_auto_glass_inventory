@@ -55,6 +55,7 @@ Route::get('/products/{product}', [ProductController::class, 'show'])->name('pro
 Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
 Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
 Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
+Route::get('/stores/{store}/products', [ProductController::class, 'getProductsByStore']);
 
 // Sale Routes
 Route::get('/sales', [SaleController::class, 'index'])->name('sales.index');

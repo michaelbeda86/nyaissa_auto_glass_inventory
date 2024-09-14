@@ -27,6 +27,7 @@ class ProductController extends Controller
             'category' => 'required',
             'unit_price' => 'required|numeric',
             'stock' => 'required|integer',
+            'reorder_threshold' => 'required|integer',
             'store_id' => 'required|exists:stores,id',
         ]);
 
@@ -58,6 +59,7 @@ class ProductController extends Controller
             'category' => 'required',
             'unit_price' => 'required|numeric',
             'stock' => 'required|integer',
+            'reorder_threshold' => 'required|integer',
             'store_id' => 'required|exists:stores,id',
         ]);
 
@@ -76,6 +78,12 @@ class ProductController extends Controller
         $products = Product::where('store_id', $storeId)->get();
         
         return response()->json($products);
+    }
+
+    public function orderList()
+    {
+        $productsToReorder = Product::whereColumn('stock', '<', 'reorder_threshold')->get();
+        return view('products.order-list', compact('productsToReorder'));
     }
 
     public function destroy(Product $product)

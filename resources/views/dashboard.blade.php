@@ -1,17 +1,36 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('layouts.app')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
+@section('content')
+<div class="container mx-auto">
+    <h1 class="text-2xl font-bold mb-4">Dashboard</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Total Income for Today -->
+        <div class="bg-blue-800 shadow-lg rounded-lg p-6">
+            <h2 class="text-lg font-semibold mb-2">Total Income Today</h2>
+            <p class="text-2xl font-bold">
+                Tshs {{ number_format($totalIncomeToday, 2) }}
+            </p>
+        </div>
+
+        <!-- Sales Made Today -->
+        <div class="bg-blue-800 shadow-lg rounded-lg p-6">
+            <h2 class="text-lg font-semibold mb-2">Sales Made Today</h2>
+            <ul class="mt-4">
+                @if ($salesToday->isEmpty())
+                    <li>No sales have been made today.</li>
+                @else
+                    @foreach ($salesToday as $sale)
+                        <li>
+                            <p class="font-medium">Product: {{ $sale->product->name }}</p>
+                            <p class="font-medium">Quantity: {{ $sale->quantity }}</p>
+                            <p class="font-bold mt-4">Total Price: Tshs {{ number_format($sale->total_price, 2) }}</p>
+                            <hr class="my-2">
+                        </li>
+                    @endforeach
+                @endif
+            </ul>
         </div>
     </div>
-</x-app-layout>
+</div>
+@endsection

@@ -39,6 +39,10 @@
                 <input type="number" name="stock" value="{{ $product->stock }}" required class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
             </div>
             <div>
+                <label for="reorder_threshold" class="block text-gray-700 dark:text-gray-300">Reorder Threshold</label>
+                <input type="number" name="reorder_threshold" id="reorder_threshold" value="{{ old('reorder_threshold', $product->reorder_threshold ?? '') }}" class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white" required>
+            </div>
+            <div>
                 <label class="block text-gray-700 dark:text-gray-300">Store</label>
                 <select name="store_id" required class="w-full mt-1 p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
                     @foreach ($stores as $store)
@@ -46,7 +50,7 @@
                     @endforeach
                 </select>
             </div>
-            <button type="submit" class="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-300">Update</button>
+            <button type="submit" class="bg-blue-600 py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-300">Update</button>
         </form>
     </div>
 @endsection

@@ -38,6 +38,10 @@
                 <input type="number" name="stock" id="stock" class="border border-gray-300 dark:border-gray-600 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-300" required>
             </div>
             <div class="flex flex-col">
+                <label for="reorder_threshold" class="mb-2 font-medium text-gray-700 dark:text-gray-300">Reorder Threshold</label>
+                <input type="number" name="reorder_threshold" id="reorder_threshold" value="{{ old('reorder_threshold') }}" class="border border-gray-300 dark:border-gray-600 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-300" required>
+            </div>
+            <div class="flex flex-col">
                 <label for="store_id" class="mb-2 font-medium text-gray-700 dark:text-gray-300">Store</label>
                 <select name="store_id" id="store_id" class="border border-gray-300 dark:border-gray-600 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-300" required>
                     @foreach ($stores as $store)
@@ -45,7 +49,7 @@
                     @endforeach
                 </select>
             </div>
-            <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-300">Create</button>
+            <button type="submit" class="w-full bg-blue-600 py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-300">Create</button>
         </form>
     </div>
 @endsection

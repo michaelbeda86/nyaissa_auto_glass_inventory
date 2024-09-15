@@ -12,6 +12,7 @@
                     <tr class="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
                         <th class="py-2 px-4 border border-gray-300 dark:border-gray-600 text-left">Product</th>
                         <th class="py-2 px-4 border border-gray-300 dark:border-gray-600 text-left">Quantity</th>
+                        <th class="py-2 px-4 border border-gray-300 dark:border-gray-600 text-left">Unit Price</th>
                         <th class="py-2 px-4 border border-gray-300 dark:border-gray-600 text-left">Total Price</th>
                         <th class="py-2 px-4 border border-gray-300 dark:border-gray-600 text-left">Sale Date</th>
                         <th class="py-2 px-4 border border-gray-300 dark:border-gray-600 text-left">Store</th>
@@ -23,6 +24,7 @@
                         <tr class="border-b border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-200">
                             <td class="py-2 px-4 border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200">{{ $sale->product->name }}</td>
                             <td class="py-2 px-4 border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200">{{ $sale->quantity }}</td>
+                            <td class="py-2 px-4 border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200">Tshs {{ $sale->formatted_unit_price }}</td>
                             <td class="py-2 px-4 border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200">Tshs {{ $sale->formatted_total_price }}</td>
                             <td class="py-2 px-4 border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200">{{ $sale->sale_date->format('Y-m-d') }}</td>
                             <td class="py-2 px-4 border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200">{{ $sale->store->name }}</td>

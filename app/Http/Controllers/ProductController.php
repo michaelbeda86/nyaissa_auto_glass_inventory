@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use PDF;
 use App\Models\Product;
 use App\Models\Store;
 
@@ -92,5 +93,23 @@ class ProductController extends Controller
 
         return redirect()->route('products.index')
                         ->with('success', 'Product deleted successfully.');
+    }
+
+    public function generateOrderListPDF(Request $request)
+    {
+        // Retrieve the selected quantities from the form
+        $quantities = $request->input('quantities');
+
+        // Get the products that need to be reordered
+        $productsToReorder = Product::whereIn('id', array_keys($quantities))->get();
+
+        // Pass products and quantities to the PDF view
+        $pdf = Pdf::loadView('products.order-list-pdf', [
+            'productsToReorder' => $productsToReorder,
+            'quantities' => $quantities,
+        ]);
+
+        // Return the generated PDF in the browser (stream the PDF)
+        return $pdf->stream('products-order-list.pdf');
     }
 }

@@ -60,6 +60,7 @@ Route::put('/products/{product}', [ProductController::class, 'update'])->name('p
 Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
 Route::get('/stores/{store}/products', [ProductController::class, 'getProductsByStore']);
 Route::get('/product-orders', [ProductController::class, 'orderList'])->name('products.orderList');
+Route::post('/products/order-list/pdf', [ProductController::class, 'generateOrderListPDF'])->name('products.order-list.pdf');
 
 // Sale Routes
 Route::get('/sales', [SaleController::class, 'index'])->name('sales.index');
